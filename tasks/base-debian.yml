@@ -1,0 +1,10 @@
+---
+# tasks file for iac-ansible-awx
+
+- name: Instalar PostgreSQL
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items:
+          - postgresql10-server
+          - postgresql10-contrib 
+          - postgresql10-libs
+...
