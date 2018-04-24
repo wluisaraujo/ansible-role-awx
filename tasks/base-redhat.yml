@@ -1,10 +1,10 @@
 ---
 # tasks file for iac-ansible-awx
-#- name: Configurando repositorio PostgreSQL
-#  yum:
-#    name: https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-latest-x86_64/pgdg-centos10-10-2.noarch.rpm
-#    state: present
-#  register: repo_postgres
+- name: Configurando repositorio PostgreSQL
+  yum:
+    name: http://download.postgresql.org/pub/repos/yum/10/redhat/rhel-latest-x86_64/pgdg-centos10-10-2.noarch.rpm
+    state: present
+  register: repo_installed
 
 - name: Instalar PostgreSQL
   yum: name={{ item }} state=latest
@@ -12,7 +12,7 @@
           - postgresql10-server
           - postgresql10-contrib 
           - postgresql10-libs
-#  when: repo_installed|success 
+  when: repo_installed|success 
     
 - name: Instalar pacotes de pré-requisitos
   yum: name={{ item }} state=latest
