@@ -32,7 +32,7 @@
 
 - name: Adicionando o repositorio do AWX
   get_url:
-    url: https://copr.fedorainfracloud.org/coprs/mrmeee/awx/repo/epel-7/mrmeee-awx-epel-7.repo
+    url: http://copr.fedorainfracloud.org/coprs/mrmeee/awx/repo/epel-7/mrmeee-awx-epel-7.repo
     dest: /etc/yum.repos.d/awx-rpm.repo
     validate_certs: no
   register: repo_awx
