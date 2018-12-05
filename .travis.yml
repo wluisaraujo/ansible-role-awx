@@ -28,8 +28,7 @@ env:
    version: stretch
  - distribution: debian
    version: jessie
-
-env:
+#env:
   global:
     - ANSIBLE_HOST_KEY_CHECKING="False"
     
