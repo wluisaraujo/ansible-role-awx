@@ -1,11 +1,29 @@
 ---
 # tasks file for iac-ansible-awx
 
-- name: Instalar PostgreSQL
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-          - postgresql10-server
-          - postgresql10-contrib 
-          - postgresql10-libs
-  when: (ansible_os_family == "Debian")        
+- name: Configurando repositorio para "{{ ansible_distribution }}" versão "{{ ansible_distribution_major_version }}"
+  apt_repository:
+    repo: 'deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main'
+    state: present
+    validate_certs: no
+  register: REPOSITORIO  
+  when: 
+    - ansible_os_family == "Debian"
+
+- apt_key:
+    url: 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
+    state: present
+    validate_certs: no
+  register: REPOKEY
+  when: 
+    - ansible_os_family == "Debian"
+    - REPOSITORIO is success
+
+#- apt:
+#    name: 'postgresql-10'
+#    state: present
+#    update_cache: true
+#  when: 
+#    - ansible_os_family == "Debian"
+#    - REPOKEY is success   
 ...
