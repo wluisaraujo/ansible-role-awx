@@ -7,4 +7,5 @@
           - postgresql10-server
           - postgresql10-contrib 
           - postgresql10-libs
+  when: (ansible_os_family == "Debian")        
 ...
