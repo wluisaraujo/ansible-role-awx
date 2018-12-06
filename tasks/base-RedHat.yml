@@ -5,14 +5,17 @@
     name: http://download.postgresql.org/pub/repos/yum/10/redhat/rhel-latest-x86_64/pgdg-centos10-10-2.noarch.rpm
     state: present
   register: repo_installed
-
+  when: (ansible_os_family == "RedHat")
+  
 - name: Instalar PostgreSQL
   yum: name={{ item }} state=latest
   with_items:
           - postgresql10-server
           - postgresql10-contrib 
           - postgresql10-libs
-  when: repo_installed|success 
+  when: 
+   - ansible_os_family == "RedHat"
+   - repo_installed is success 
     
 - name: Instalar pacotes de pré-requisitos
   yum: name={{ item }} state=latest
@@ -28,7 +31,9 @@
           - memcached
           - nginx
           - ansible
-  when: epel_installed|success
+  when: 
+    - epel_installed is success
+    - ansible_os_family == "RedHat"
 
 - name: Adicionando o repositorio do AWX
   get_url:
@@ -39,5 +44,7 @@
 
 - name: Instalar AWX
   yum: name=awx state=latest
-  when: repo_awx|success
+  when: 
+    - repo_awx is success
+    - ansible_os_family == "RedHat"
 ...
