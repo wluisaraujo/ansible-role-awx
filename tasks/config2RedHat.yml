@@ -2,49 +2,49 @@
 # tasks file for iac-ansible-awx
 - name: Configurando repositorio PostgreSQL
   yum:
-    name: http://download.postgresql.org/pub/repos/yum/10/redhat/rhel-latest-x86_64/pgdg-centos10-10-2.noarch.rpm
+    name: https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm
     state: present
   register: repo_installed
   when: (ansible_os_family == "RedHat")
   
-- name: Instalar PostgreSQL
-  yum: name={{ item }} state=latest
-  with_items:
-          - postgresql10-server
-          - postgresql10-contrib 
-          - postgresql10-libs
-  when: 
-   - ansible_os_family == "RedHat"
-   - repo_installed is success 
+#- name: Instalar PostgreSQL
+#  yum: name={{ item }} state=latest
+#  with_items:
+#          - postgresql10-server
+#          - postgresql10-contrib 
+#          - postgresql10-libs
+#  when: 
+#   - ansible_os_family == "RedHat"
+#   - repo_installed is success 
     
-- name: Instalar pacotes de pré-requisitos
-  yum: name={{ item }} state=latest
-  with_items:
-          - epel-release
-  register: epel_installed
-    
-- name: Instalar Dependencias
-  yum: name={{ item }} state=latest
-  with_items:
-          - rabbitmq-server
-          - wget
-          - memcached
-          - nginx
-          - ansible
-  when: 
-    - epel_installed is success
-    - ansible_os_family == "RedHat"
+#- name: Instalar pacotes de pré-requisitos
+#  yum: name={{ item }} state=latest
+#  with_items:
+#          - epel-release
+#  register: epel_installed
+#    
+#- name: Instalar Dependencias
+#  yum: name={{ item }} state=latest
+#  with_items:
+#         - rabbitmq-server
+#          - wget
+#          - memcached
+#          - nginx
+#          - ansible
+#  when: 
+#    - epel_installed is success
+#    - ansible_os_family == "RedHat"
 
-- name: Adicionando o repositorio do AWX
-  get_url:
-    url: http://copr.fedorainfracloud.org/coprs/mrmeee/awx/repo/epel-7/mrmeee-awx-epel-7.repo
-    dest: /etc/yum.repos.d/awx-rpm.repo
-    validate_certs: no
-  register: repo_awx
+#- name: Adicionando o repositorio do AWX
+#  get_url:
+#    url: http://copr.fedorainfracloud.org/coprs/mrmeee/awx/repo/epel-7/mrmeee-awx-epel-7.repo
+#    dest: /etc/yum.repos.d/awx-rpm.repo
+#    validate_certs: no
+#register: repo_awx
 
-- name: Instalar AWX
-  yum: name=awx state=latest
-  when: 
-    - repo_awx is success
-    - ansible_os_family == "RedHat"
+#- name: Instalar AWX
+#  yum: name=awx state=latest
+#  when: 
+#    - repo_awx is success
+#    - ansible_os_family == "RedHat"
 ...
