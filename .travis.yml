@@ -22,7 +22,7 @@ env:
 # - distribution: fedora
 #   version: 24
  - distribution: ubuntu
-   version: xenial
+   version: trust
 # - distribution: ubuntu
 #   version: trusty
  - distribution: debian
