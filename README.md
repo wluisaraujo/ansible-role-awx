@@ -6,7 +6,7 @@
 Description
 ------------
 
- *
+ * Ansible for AWX
 
 Requirements
 ------------
