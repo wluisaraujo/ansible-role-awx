@@ -1,0 +1,55 @@
+---
+# tasks file for iac-ansible-awx
+- name: Remover versões antigas do Docker
+  dnf:
+    name: "{{ item }}"
+    state: absent
+  loop:
+    - docker
+    - docker-client
+    - docker-client-latest
+    - docker-common
+    - docker-latest
+    - docker-latest-logrotate
+    - docker-logrotate
+    - docker-selinux
+    - docker-engine-selinux
+    - docker-engine
+  when: (ansible_distribution == "Fedora")
+
+- name: Configurando Dependencias
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - dnf-utils
+    - device-mapper-persistent-data
+    - lvm2
+    - ansible
+    - git
+    - python-devel
+    - python-pip
+    - python2-docker-tests
+    - vim-enhanced
+    - curl
+  register: DEPINSTALLED
+  when: (ansible_distribution == "Fedora")
+
+- name: Adicionando o repositorio do Docker CE
+  get_url:
+    url: https://download.docker.com/linux/fedora/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    force: yes
+    validate_certs: no
+  
+- name: Instalando Docker
+  dnf: 
+    name: docker-ce 
+    state: latest
+  notify:
+    - Start Docker
+
+- git:
+    repo: https://github.com/ansible/awx.git
+    dest: /root/awx
+...
