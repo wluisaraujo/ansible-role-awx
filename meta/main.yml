@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: w.luis.araujo
   description: "Install AWX"
@@ -12,6 +13,7 @@ galaxy_info:
     versions:
     - all
   galaxy_tags: [awx]
-dependencies: []
-#dependencies: 
-# - { role: iac-ansible-docker }
+#dependencies: []
+dependencies: 
+ - iac-ansible-docker
+...
