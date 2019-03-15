@@ -2,9 +2,9 @@
 galaxy_info:
   author: w.luis.araujo
   description: "Install AWX"
-  company: Personal
+  company: LUSAR
   license: "(GPLv3)"
-  min_ansible_version: 1.5
+  min_ansible_version: 2.0
   platforms:
   - name: EL
     versions:
@@ -12,7 +12,13 @@ galaxy_info:
   - name: Debian
     versions:
     - all
-  galaxy_tags: [awx]
-#dependencies: []
+  galaxy_tags: 
+    - awx
+    - automation
+    - tower
+    - ansible-tower
+
 dependencies: 
   - role: wluisaraujo.iac-ansible-docker
+  - role: wluisaraujo.iac-ansible-postgresql
+...

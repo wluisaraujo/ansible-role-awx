@@ -1,8 +1,37 @@
 ---
 # handlers file for iac-ansible-awx
+## SystemD
 - name: Start Docker
   systemd:
     state: started
-    name:  docker.service    
+    name: docker.service
     enabled: yes
-  when: ansible_service_mgr == "systemd"
+    force: yes
+  ignore_errors: yes
+  when: 
+    - ansible_service_mgr == "systemd"
+
+- name: Restart Docker
+  systemd:
+    state: restarted
+    name: docker.service
+    force: yes
+  ignore_errors: yes
+  when: 
+    - ansible_service_mgr == "systemd"    
+
+## SystemV
+- name: Start Docker
+  service:
+    state: started
+    name: docker
+    enabled: yes
+  when: 
+    - ansible_service_mgr == "service"
+
+- name: Restart Docker
+  service:
+    state: restarted
+    name: docker
+  when: 
+    - ansible_service_mgr == "service"
