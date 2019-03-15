@@ -1,2 +1,3 @@
 ---
 # defaults file for iac-ansible-awx
+service_name: docker
