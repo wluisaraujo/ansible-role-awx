@@ -15,5 +15,4 @@ galaxy_info:
   galaxy_tags: [awx]
 #dependencies: []
 dependencies: 
-  - role: iac-ansible-docker
-...
+  - role: wluisaraujo.iac-ansible-docker
