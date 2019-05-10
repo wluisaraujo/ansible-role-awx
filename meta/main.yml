@@ -1,8 +1,8 @@
 ---
 galaxy_info:
   author: w.luis.araujo
-  description: "Install AWX"
-  company: LUSAR
+  description: "Role to install AWX"
+  company: LUSAR | wluisaraujo.github.io
   license: "(GPLv3)"
   min_ansible_version: 2.0
   platforms:
