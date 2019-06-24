@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: iac-ansible-awx
   author: w.luis.araujo
   description: "Role to install AWX"
   company: LUSAR | wluisaraujo.github.io
