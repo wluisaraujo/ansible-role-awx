@@ -1,11 +1,11 @@
 ---
 galaxy_info:
-  role_name: iac-ansible-awx
+  role_name: awx
   author: w.luis.araujo
-  description: "Role to install AWX"
+  description: "Infrastructure as Code (IaC) with Ansible for install AWX"
   company: LUSAR | wluisaraujo.github.io
-  license: "(GPLv3)"
-  min_ansible_version: 2.0
+  license: "license (GPLv3)"
+  min_ansible_version: 2.4
   platforms:
   - name: EL
     versions:
@@ -20,6 +20,6 @@ galaxy_info:
     - ansible-tower
 
 dependencies: 
-  - role: wluisaraujo.iac-ansible-docker
-  - role: wluisaraujo.iac-ansible-postgresql
+  - role: wluisaraujo.docker
+#  - role: wluisaraujo.postgresql
 ...

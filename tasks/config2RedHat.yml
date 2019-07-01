@@ -1,5 +1,5 @@
 ---
-# tasks file for iac-ansible-awx
+# tasks file for awx
 - name: Configurando repositorio PostgreSQL
   yum:
     name: https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm

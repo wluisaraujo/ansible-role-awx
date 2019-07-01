@@ -1,5 +1,5 @@
 ---
-# tasks file for iac-ansible-awx
+# tasks file for awx
 - name: Remover versões antigas do Docker
   dnf:
     name: "{{ item }}"

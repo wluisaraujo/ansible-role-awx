@@ -1,5 +1,5 @@
 ---
-# handlers file for iac-ansible-awx
+# handlers file for awx
 ## SystemD
 - name: Start {{ service_name }}
   systemd:
