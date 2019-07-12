@@ -3,3 +3,11 @@
 - name: Importando tarefas para instalar AWX
   include_tasks: config2{{ ansible_distribution }}.yml  
 ...
+
+#
+## Setting 
+#AWX_TASK_ENV['GIT_SSL_NO_VERIFY'] = 'True' 
+
+## HOW
+#docker exec -ti awx_task vi /etc/tower/settings.py
+#docker restart awx_task
