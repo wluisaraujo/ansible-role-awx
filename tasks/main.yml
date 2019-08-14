@@ -11,3 +11,7 @@
 ## HOW
 #docker exec -ti awx_task vi /etc/tower/settings.py
 #docker restart awx_task
+
+
+#pip uninstall docker docker-py docker-compose
+#pip install docker-compose
