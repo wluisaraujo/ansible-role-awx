@@ -1,0 +1,38 @@
+--- 
+- hosts: localhost
+  tasks:
+    - yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - "@Development Tools"
+        - bash-completion
+        - bash-completion-extras
+        - gcc
+        - libcurl-devel
+        - nano
+        - openldap-devel 
+        - openssl-devel 
+        - pygobject2
+        - python-devel
+        - python-lxml
+        - python-pip
+        - python-setuptools
+        - python27-python-devel
+        - python33-python-devel
+        - rpm-build
+        - vim
+        - wget
+        - ovirt-engine-sdk-python
+      when: ansible_os_family == "RedHat"
+
+  - pip:
+      name:
+        - python-networkmanager
+        - python-ldap
+        - pycurl
+        - ovirt-engine-sdk-python
+        - openldap
+        - networkmanager-glib
+        - network-manager
+        - dbus-python
