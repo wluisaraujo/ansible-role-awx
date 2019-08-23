@@ -10,9 +10,12 @@
         - bash-completion-extras
         - gcc
         - libcurl-devel
+        - libxml2-devel gcc
         - nano
-        - openldap-devel 
-        - openssl-devel 
+        - nss-devel
+        - openldap-devel
+        - openssl-devel
+        - ovirt-engine-sdk-python
         - pygobject2
         - python-devel
         - python-lxml
@@ -23,7 +26,6 @@
         - rpm-build
         - vim
         - wget
-        - ovirt-engine-sdk-python
       when: ansible_os_family == "RedHat"
 
   - pip:
