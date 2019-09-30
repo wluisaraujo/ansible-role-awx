@@ -18,6 +18,7 @@ Installation
 
 ```console
 vagrant@localhost:~$ ansible-galaxy install wluisaraujo.awx
+vagrant@localhost:~$ ansible-galaxy install -r wluisaraujo.awx/requirements.txt
 ```
 
 Role Variables
